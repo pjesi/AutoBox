@@ -31,7 +31,7 @@ import java.util.Arrays;
  */
 public class JoinedIterator<T> implements Iterator<T>{
 
-    private Iterator<? extends T>[] iterators;
+    private final Iterator<? extends T>[] iterators;
     private int status = 0;
     private Iterator<? extends T> current;
     

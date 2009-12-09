@@ -31,9 +31,9 @@ import java.util.Iterator;
  *
  *
  */
-public class IterableString implements Iterable<String> {
+public final class IterableString implements Iterable<String> {
 
-    private String string;
+    private final String string;
 
     public IterableString(String string){
         this.string = string;
@@ -53,7 +53,7 @@ public class IterableString implements Iterable<String> {
      * @since 0.1
      */
     public static class CharIterator implements Iterator<Character> {
-        private char[] seq;
+        private final char[] seq;
         private int state = 0;
 
         public CharIterator(String string){
@@ -85,7 +85,7 @@ public class IterableString implements Iterable<String> {
      * @since 0.1
      */
     public static class StringIterator implements Iterator<String>{
-        private CharIterator iterator;
+        private final CharIterator iterator;
 
         public StringIterator(String string){
             this.iterator = new CharIterator(string);

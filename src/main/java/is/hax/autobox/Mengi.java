@@ -39,7 +39,7 @@ import java.util.*;
  */
 public class Mengi<T> implements Iterable<T> {
 
-    private Iterable<T> iterable;
+    private final Iterable<T> iterable;
     private Filter<T> filter;
     private int length = -1;
 
@@ -161,8 +161,8 @@ public class Mengi<T> implements Iterable<T> {
      * Returns an element in the query by the given index.
      * Currently returns null if not found.
      * <br></br><br></br>
-     * @param index
-     * @return an element in the query by the given index
+     * @param index the position of element to retrieve.
+     * @return an element in the query by the given index.
      * @since 0.1
      */
     public T get(final int index) {
@@ -234,7 +234,7 @@ public class Mengi<T> implements Iterable<T> {
 
     private final class CompositeInvocationHandler<C> implements InvocationHandler {
 
-    	public Mengi<C> query;
+    	public final Mengi<C> query;
 
     	public CompositeInvocationHandler(Mengi<C> query) {
     		this.query = query;
@@ -281,10 +281,10 @@ public class Mengi<T> implements Iterable<T> {
         return xor;
     }
 
-    private final class XorInvocationHandler<C, E extends Exception> implements InvocationHandler {
+    private static final class XorInvocationHandler<C, E extends Exception> implements InvocationHandler {
 
-        public Mengi<C> query;
-        Mengi<Class<E>> catchables;
+        final Mengi<C> query;
+        final Mengi<Class<E>> catchables;
 
         public XorInvocationHandler(Mengi<C> query, Mengi<Class<E>> catchables) {
             this.query = query;
